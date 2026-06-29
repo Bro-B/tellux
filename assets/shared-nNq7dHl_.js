@@ -1,0 +1,1 @@
+const e="https://api.maptiler.com/tiles/terrain-quantized-mesh-v2/?key=n6YRz1QrQdbExXeIG2QC",t="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";function s(r){r&&(r.textContent="当前示例使用 XYZ 影像数据源加载 ArcGIS World Imagery。")}export{t as a,e as d,s};

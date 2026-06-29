@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="sandcastle-thumbnail" content="./images/base.png" />
+    <title>Tellux Camera FlyTo</title>
+    <script type="module" crossorigin src="/tellux/assets/flyTo-BWJBWs-T.js"></script>
+    <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-nNq7dHl_.js">
+    <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+  </head>
+  <body>
+    <main class="viewer-shell">
+      <div id="viewer"></div>
+      <section class="toolbar" aria-label="Camera flyTo controls">
+        <header class="toolbar__header">
+          <h1>相机飞行</h1>
+          <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+        </header>
+        <p>使用 <code>viewer.camera.flyTo</code> 触发 Cesium 风格的相机飞行动画。</p>
+        <p id="token-status" class="status" aria-live="polite"></p>
+        <p id="flight-status" class="status" aria-live="polite">选择一个目的地开始飞行。</p>
+        <div class="toolbar__row">
+          <button class="button" data-destination="tokyo" type="button">东京</button>
+          <button class="button" data-destination="shanghai" type="button">上海</button>
+          <button class="button" data-destination="singapore" type="button">新加坡</button>
+          <button class="button" id="cancel-flight" type="button">取消飞行</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

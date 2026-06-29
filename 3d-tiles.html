@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="sandcastle-order" content="2" />
+    <meta name="sandcastle-thumbnail" content="./images/3dtiles.png" />
+    <title>Tellux 3D Tiles</title>
+    <script type="module" crossorigin src="/tellux/assets/tiles3d-O-EGWN9w.js"></script>
+    <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-nNq7dHl_.js">
+    <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+  </head>
+  <body>
+    <main class="viewer-shell">
+      <div id="viewer"></div>
+      <section class="toolbar toolbar--wide" aria-label="3D Tiles controls">
+        <header class="toolbar__header">
+          <h1>3D Tiles 加载</h1>
+          <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+        </header>
+        <p>通过 <code>viewer.load3DTileset</code> 加载独立场景 3D Tiles，默认使用 CesiumGS 公开样例，也可以替换为自定义 URL 或 Cesium Ion 资源。</p>
+        <label class="field">
+          <span>tileset.json URL</span>
+          <input id="tileset-url" class="field__input" type="url" autocomplete="off" spellcheck="false" />
+        </label>
+        <div class="toolbar__row">
+          <label class="field">
+            <span>Cesium Ion asset id</span>
+            <input id="ion-asset-id" class="field__input" type="text" autocomplete="off" spellcheck="false" />
+          </label>
+          <label class="field">
+            <span>Cesium Ion token</span>
+            <input id="ion-token" class="field__input" type="password" autocomplete="off" spellcheck="false" />
+          </label>
+        </div>
+        <label class="switch">
+          <input id="tileset-visible" type="checkbox" checked />
+          <span>显示 3D Tiles</span>
+        </label>
+        <label class="switch">
+          <input id="tileset-fly-to" type="checkbox" checked />
+          <span>加载后飞行到 3D Tiles</span>
+        </label>
+        <p id="tileset-status" class="status" aria-live="polite"></p>
+        <div class="toolbar__row">
+          <button class="button" id="load-url-tileset" type="button">加载 URL</button>
+          <button class="button" id="load-ion-tileset" type="button">加载 Cesium Ion</button>
+          <button class="button" id="remove-tileset" type="button">移除</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

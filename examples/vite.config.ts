@@ -19,8 +19,6 @@ const htmlInputs = {
   instancedHorses: resolve(__dirname, "instanced-horses.html"),
   mixedHeightSamplingHorses: resolve(__dirname, "mixed-height-sampling-horses.html"),
   vegetation: resolve(__dirname, "vegetation.html"),
-  hismForest: resolve(__dirname, "hism/hism-forest.html"),
-  hismCompare: resolve(__dirname, "hism/hism-compare.html"),
   sandcastle: resolve(__dirname, "sandcastle.html"),
   sandcastleRunner: resolve(__dirname, "sandcastle/runner.html"),
 }
@@ -38,7 +36,7 @@ export default defineConfig(({ mode }) => {
     base: mode === "ghpages" ? "/tellux/" : "/",
     envDir: projectRoot,
     optimizeDeps: {
-      include: ["@mapbox/vector-tile", "pbf", "@sparkjsdev/spark", "3d-tiles-rendererjs-3dgs-plugin", "three-mesh-bvh"],
+      include: ["@mapbox/vector-tile", "pbf", "@sparkjsdev/spark", "3d-tiles-rendererjs-3dgs-plugin"],
     },
     server: {
       fs: {

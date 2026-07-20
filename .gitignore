@@ -13,5 +13,4 @@ docs/.vitepress/cache
 .vscode/*
 !.vscode/extensions.json
 .env
-benchmark-results/
 

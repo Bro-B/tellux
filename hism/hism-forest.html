@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="sandcastle-order" content="72" />
+  <meta name="sandcastle-thumbnail" content="https://picture.cyanfish.site/202607211408198.png" />
+  <title>Tellux HISM Forest</title>
+  <style>
+    .hism-hud {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 5;
+      min-width: 280px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(8, 16, 28, 0.82);
+      color: #e8f1ff;
+      font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+    }
+
+    .hism-hud h2 {
+      margin: 0 0 8px;
+      font: 600 13px/1.2 system-ui, sans-serif;
+      color: #fff;
+    }
+
+    .hism-hud dl {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 4px 10px;
+      margin: 0;
+    }
+
+    .hism-hud dt {
+      color: #8fb4ff;
+    }
+
+    .hism-hud dd {
+      margin: 0;
+      text-align: right;
+    }
+
+    .hism-pick {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffd27a;
+      min-height: 1.5em;
+    }
+  </style>
+  <script type="module" crossorigin src="/tellux/assets/hismForest-aqzl3zYf.js"></script>
+  <link rel="modulepreload" crossorigin href="/tellux/assets/toggle-DIIVrEA5.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/shared-Cn6kmm9J.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/example-panel-HGVPe6NO.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/location-readout-CDm1IW0n.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/ez-tree.es-sa-R6ecl.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/shared-DpZ6dl9d.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/boot-DxnVbI2c.js">
+  <link rel="stylesheet" crossorigin href="/tellux/assets/toggle-D54SvzIR.css">
+</head>
+
+<body>
+  <main class="viewer-shell">
+    <div id="viewer"></div>
+    <aside class="hism-hud" aria-live="polite">
+      <h2>HISM Runtime</h2>
+      <dl>
+        <dt>FPS</dt>
+        <dd id="hism-fps">-</dd>
+        <dt>Layers</dt>
+        <dd id="hism-layers">-</dd>
+        <dt>Clusters</dt>
+        <dd id="hism-clusters">-</dd>
+        <dt>Instances</dt>
+        <dd id="hism-instances">-</dd>
+        <dt>Visible</dt>
+        <dd id="hism-visible">-</dd>
+        <dt>Draw Calls</dt>
+        <dd id="hism-drawcalls">-</dd>
+        <dt>LOD 0 / 1</dt>
+        <dd id="hism-lod">-</dd>
+      </dl>
+      <p id="hism-pick" class="hism-pick" data-i18n="example.hism-forest.pick.hint">点击场景拾取 HISM 实例</p>
+    </aside>
+    <aside class="example-panel" id="hism-forest-panel" data-i18n-attr="aria-label:example.hism-forest.panel.aria" aria-label="HISM 森林基准控件">
+      <header class="example-panel__chrome">
+        <button
+          type="button"
+          class="example-panel__fold"
+          id="hism-forest-panel-fold"
+          aria-expanded="true"
+          aria-controls="hism-forest-panel-body"
+          title="收起面板"
+          aria-label="收起面板"
+          data-i18n-attr="title:common.panel.collapse,aria-label:common.panel.collapse"
+        ></button>
+        <span class="example-panel__title" data-i18n="example.hism-forest.panel.title">HISM 森林基准</span>
+      </header>
+
+      <div class="example-panel__collapse" id="hism-forest-panel-body">
+        <div class="example-panel__content">
+          <details class="example-panel__folder" open>
+            <summary class="example-panel__folder-summary" data-i18n="example.hism-forest.folder.actions">操作</summary>
+            <div class="example-panel__folder-collapse">
+              <div class="example-panel__folder-body">
+                <button class="example-panel__button" id="fly-to-hism-forest" type="button" data-i18n="example.hism-forest.btn.fly">飞到场景</button>
+                <button class="example-panel__button example-panel__button--ghost" id="regenerate-hism-forest" type="button" data-i18n="example.hism-forest.btn.regen">
+                  重新生成
+                </button>
+              </div>
+            </div>
+          </details>
+
+          <details class="example-panel__folder" open>
+            <summary class="example-panel__folder-summary" data-i18n="example.hism-forest.folder.status">状态</summary>
+            <div class="example-panel__folder-collapse">
+              <div class="example-panel__folder-body">
+                <p id="hism-status" class="example-panel__status" aria-live="polite" data-i18n="example.hism-forest.status.initial">正在准备 HISM 场景...</p>
+                <dl class="example-panel__readout">
+                  <dt>Trees</dt>
+                  <dd id="hism-tree-count">-</dd>
+                  <dt>Rocks</dt>
+                  <dd id="hism-rock-count">-</dd>
+                  <dt>Sampling</dt>
+                  <dd id="hism-sampling-status">-</dd>
+                </dl>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+
+</html>

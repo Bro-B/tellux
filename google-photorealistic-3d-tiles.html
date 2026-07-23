@@ -6,34 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="sandcastle-order" content="2.2" />
   <meta name="sandcastle-thumbnail" content="./images/city.png" />
-  <title>Tellux 城市级海量模型加载</title>
-  <script type="module" crossorigin src="/tellux/assets/googlePhotorealistic3dTiles-BlS8JF_4.js"></script>
-  <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
-  <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
-  <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+  <title data-i18n="example.google-photorealistic-3d-tiles.docTitle">Tellux 城市级海量模型加载</title>
+  <script type="module" crossorigin src="/tellux/assets/googlePhotorealistic3dTiles-D-i-5FwU.js"></script>
+  <link rel="modulepreload" crossorigin href="/tellux/assets/toggle-DIIVrEA5.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/shared-Cn6kmm9J.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/example-panel-HGVPe6NO.js">
+  <link rel="modulepreload" crossorigin href="/tellux/assets/boot-DxnVbI2c.js">
+  <link rel="stylesheet" crossorigin href="/tellux/assets/toggle-D54SvzIR.css">
 </head>
 
 <body>
   <main class="viewer-shell">
     <div id="viewer"></div>
-    <section class="toolbar toolbar--wide" aria-label="城市级海量模型加载 controls">
-      <header class="toolbar__header">
-        <h1>城市级海量模型加载</h1>
-        <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+
+    <aside class="example-panel" id="city-panel" data-i18n-attr="aria-label:example.google-photorealistic-3d-tiles.panel.aria" aria-label="城市级海量模型加载控件">
+      <header class="example-panel__chrome">
+        <button
+          type="button"
+          class="example-panel__fold"
+          id="city-panel-fold"
+          aria-expanded="true"
+          aria-controls="city-panel-body"
+          title="收起面板"
+          aria-label="收起面板"
+          data-i18n-attr="title:common.panel.collapse,aria-label:common.panel.collapse"
+        ></button>
+        <span class="example-panel__title" data-i18n="example.google-photorealistic-3d-tiles.panel.title">城市级海量模型</span>
       </header>
-      <p>通过 <code>viewer.load3DTileset</code> 加载 Cesium Ion asset 2275207，并隐藏默认基础地球表面，将城市级摄影测量 3D Tiles 作为海量模型底图使用。</p>
-      <label class="field">
-        <span>Cesium Ion token</span>
-        <input id="ion-token" class="field__input" type="password" autocomplete="off" spellcheck="false" />
-      </label>
-      <p id="tileset-status" class="status" aria-live="polite"></p>
-      <div class="toolbar__row">
-        <button class="button" id="load-tileset" type="button">加载 3D Tiles</button>
-        <button class="button" id="fly-to-city" type="button">定位到东京</button>
+
+      <div class="example-panel__collapse" id="city-panel-body">
+        <div class="example-panel__content">
+          <details class="example-panel__folder" open>
+            <summary class="example-panel__folder-summary" data-i18n="example.google-photorealistic-3d-tiles.folder.load">加载</summary>
+            <div class="example-panel__folder-collapse">
+              <div class="example-panel__folder-body">
+                <div class="example-panel__field">
+                  <label class="example-panel__label" for="ion-token" data-i18n="example.3d-tiles.label.token">Cesium Ion token</label>
+                  <input id="ion-token" class="example-panel__input" type="password" autocomplete="off" spellcheck="false" />
+                </div>
+                <button class="example-panel__button" id="load-tileset" type="button" data-i18n="example.google-photorealistic-3d-tiles.btn.load">加载 3D Tiles</button>
+                <button class="example-panel__button example-panel__button--ghost" id="fly-to-city" type="button" data-i18n="example.google-photorealistic-3d-tiles.btn.flyTo">定位到东京</button>
+              </div>
+            </div>
+          </details>
+
+          <details class="example-panel__folder" open>
+            <summary class="example-panel__folder-summary" data-i18n="example.google-photorealistic-3d-tiles.folder.status">状态</summary>
+            <div class="example-panel__folder-collapse">
+              <div class="example-panel__folder-body">
+                <p id="tileset-status" class="example-panel__status" aria-live="polite"></p>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-    </section>
-    <aside id="google-attributions" class="tile-attributions" aria-label="地图数据来源"></aside>
-  </main>
+    </aside>
+
+    <aside id="google-attributions" class="tile-attributions" data-i18n-attr="aria-label:example.google-photorealistic-3d-tiles.attr.aria" aria-label="地图数据来源"></aside>
+  </main>
 </body>
 
 </html>

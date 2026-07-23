@@ -5,30 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="sandcastle-thumbnail" content="./images/base.png" />
     <title>Tellux Camera FlyTo</title>
-    <script type="module" crossorigin src="/tellux/assets/flyTo-BWJBWs-T.js"></script>
-    <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-nNq7dHl_.js">
-    <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+    <script type="module" crossorigin src="/tellux/assets/flyTo-B5F8sWY2.js"></script>
+    <link rel="modulepreload" crossorigin href="/tellux/assets/toggle-DIIVrEA5.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-Cn6kmm9J.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/example-panel-HGVPe6NO.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/boot-DxnVbI2c.js">
+    <link rel="stylesheet" crossorigin href="/tellux/assets/toggle-D54SvzIR.css">
   </head>
   <body>
     <main class="viewer-shell">
       <div id="viewer"></div>
-      <section class="toolbar" aria-label="Camera flyTo controls">
-        <header class="toolbar__header">
-          <h1>相机飞行</h1>
-          <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+      <aside class="example-panel" data-i18n-attr="aria-label:example.fly-to.panel.aria" aria-label="相机飞行控件">
+        <header class="example-panel__chrome">
+          <button
+            type="button"
+            class="example-panel__fold"
+            aria-expanded="true"
+            title="收起面板"
+            aria-label="收起面板"
+            data-i18n-attr="title:common.panel.collapse,aria-label:common.panel.collapse"
+          ></button>
+          <span class="example-panel__title" data-i18n="example.fly-to.panel.title">相机飞行</span>
         </header>
-        <p>使用 <code>viewer.camera.flyTo</code> 触发 Cesium 风格的相机飞行动画。</p>
-        <p id="token-status" class="status" aria-live="polite"></p>
-        <p id="flight-status" class="status" aria-live="polite">选择一个目的地开始飞行。</p>
-        <div class="toolbar__row">
-          <button class="button" data-destination="tokyo" type="button">东京</button>
-          <button class="button" data-destination="shanghai" type="button">上海</button>
-          <button class="button" data-destination="singapore" type="button">新加坡</button>
-          <button class="button" id="cancel-flight" type="button">取消飞行</button>
+
+        <div class="example-panel__collapse">
+          <div class="example-panel__content">
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.fly-to.folder.dest">目的地</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <p class="example-panel__hint" data-i18n-html="example.fly-to.hint">使用 <code>viewer.camera.flyTo</code> 触发 Cesium 风格的相机飞行动画。</p>
+                  <div id="destination-row"></div>
+                </div>
+              </div>
+            </details>
+
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.fly-to.folder.actions">操作</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <button class="example-panel__button example-panel__button--ghost" id="cancel-flight" type="button" data-i18n="example.fly-to.btn.cancel">
+                    取消飞行
+                  </button>
+                </div>
+              </div>
+            </details>
+
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.fly-to.folder.status">状态</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <p id="token-status" class="example-panel__status" aria-live="polite"></p>
+                  <p id="flight-status" class="example-panel__status" aria-live="polite" data-i18n="example.fly-to.status.initial">选择一个目的地开始飞行。</p>
+                </div>
+              </div>
+            </details>
+          </div>
         </div>
-      </section>
+      </aside>
     </main>
   </body>
 </html>

@@ -5,28 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="sandcastle-order" content="3" />
     <meta name="sandcastle-thumbnail" content="https://picture.cyanfish.site/20260612224058898.png" />
-    <title>Tellux Atmosphere and Clouds</title>
-    <script type="module" crossorigin src="/tellux/assets/atmosphere-DamG5f2p.js"></script>
-    <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-nNq7dHl_.js">
-    <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+    <title data-i18n="example.atmosphere.docTitle">Tellux 体积云与大气</title>
+    <script type="module" crossorigin src="/tellux/assets/atmosphere-sD2hzLg8.js"></script>
+    <link rel="modulepreload" crossorigin href="/tellux/assets/toggle-DIIVrEA5.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-Cn6kmm9J.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/example-panel-HGVPe6NO.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/boot-DxnVbI2c.js">
+    <link rel="stylesheet" crossorigin href="/tellux/assets/toggle-D54SvzIR.css">
   </head>
   <body>
     <main class="viewer-shell">
       <div id="viewer"></div>
-      <section class="toolbar" aria-label="Atmosphere and clouds controls">
-        <header class="toolbar__header">
-          <h1>体积云与大气</h1>
-          <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+      <aside class="example-panel" data-i18n-attr="aria-label:example.atmosphere.panel.aria" aria-label="大气与云控件">
+        <header class="example-panel__chrome">
+          <button
+            type="button"
+            class="example-panel__fold"
+            aria-expanded="true"
+            title="收起面板"
+            aria-label="收起面板"
+            data-i18n-attr="title:common.panel.collapse,aria-label:common.panel.collapse"
+          ></button>
+          <span class="example-panel__title" data-i18n="example.atmosphere.panel.title">体积云与大气</span>
         </header>
-        <p>使用右上角公共设置面板调整大气、体积云、日期、光照和曝光。</p>
-        <div class="toolbar__row">
-          <button class="button" id="dujiangyan" type="button">紫坪铺水库</button>
-          <button class="button" id="pacific" type="button">太平洋</button>
-          <button class="button" id="himalaya" type="button">喜马拉雅</button>
+
+        <div class="example-panel__collapse">
+          <div class="example-panel__content">
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.atmosphere.folder.place">地点</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <p class="example-panel__hint" data-i18n="example.atmosphere.hint">使用右上角公共设置面板调整大气、体积云、日期、光照和曝光。</p>
+                  <button class="example-panel__button" id="dujiangyan" type="button" data-i18n="example.atmosphere.btn.dujiangyan">紫坪铺水库</button>
+                  <button class="example-panel__button" id="himalaya" type="button" data-i18n="example.atmosphere.btn.himalaya">喜马拉雅</button>
+                </div>
+              </div>
+            </details>
+          </div>
         </div>
-      </section>
+      </aside>
     </main>
   </body>
 </html>

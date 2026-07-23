@@ -5,51 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="sandcastle-order" content="2" />
     <meta name="sandcastle-thumbnail" content="./images/3dtiles.png" />
-    <title>Tellux 3D Tiles</title>
-    <script type="module" crossorigin src="/tellux/assets/tiles3d-O-EGWN9w.js"></script>
-    <link rel="modulepreload" crossorigin href="/tellux/assets/preload-helper-CdhvrlGE.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/index-DSM1XBcg.js">
-    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-nNq7dHl_.js">
-    <link rel="stylesheet" crossorigin href="/tellux/assets/preload-helper-DW20Cr8G.css">
+    <title data-i18n="example.3d-tiles.docTitle">Tellux 3D Tiles</title>
+    <script type="module" crossorigin src="/tellux/assets/tiles3d-B50qwu83.js"></script>
+    <link rel="modulepreload" crossorigin href="/tellux/assets/toggle-DIIVrEA5.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/shared-Cn6kmm9J.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/example-panel-HGVPe6NO.js">
+    <link rel="modulepreload" crossorigin href="/tellux/assets/boot-DxnVbI2c.js">
+    <link rel="stylesheet" crossorigin href="/tellux/assets/toggle-D54SvzIR.css">
   </head>
   <body>
     <main class="viewer-shell">
       <div id="viewer"></div>
-      <section class="toolbar toolbar--wide" aria-label="3D Tiles controls">
-        <header class="toolbar__header">
-          <h1>3D Tiles 加载</h1>
-          <a class="icon-button icon-button--back" href="./index.html" aria-label="返回目录" title="返回目录"></a>
+
+      <aside class="example-panel" id="tileset-panel" data-i18n-attr="aria-label:example.3d-tiles.panel.aria" aria-label="3D Tiles 加载控件">
+        <header class="example-panel__chrome">
+          <button
+            type="button"
+            class="example-panel__fold"
+            id="tileset-panel-fold"
+            aria-expanded="true"
+            aria-controls="tileset-panel-body"
+            title="收起面板"
+            aria-label="收起面板"
+            data-i18n-attr="title:common.panel.collapse,aria-label:common.panel.collapse"
+          ></button>
+          <span class="example-panel__title" data-i18n="example.3d-tiles.panel.title">3D Tiles 加载</span>
         </header>
-        <p>通过 <code>viewer.load3DTileset</code> 加载独立场景 3D Tiles，默认使用 CesiumGS 公开样例，也可以替换为自定义 URL 或 Cesium Ion 资源。</p>
-        <label class="field">
-          <span>tileset.json URL</span>
-          <input id="tileset-url" class="field__input" type="url" autocomplete="off" spellcheck="false" />
-        </label>
-        <div class="toolbar__row">
-          <label class="field">
-            <span>Cesium Ion asset id</span>
-            <input id="ion-asset-id" class="field__input" type="text" autocomplete="off" spellcheck="false" />
-          </label>
-          <label class="field">
-            <span>Cesium Ion token</span>
-            <input id="ion-token" class="field__input" type="password" autocomplete="off" spellcheck="false" />
-          </label>
+
+        <div class="example-panel__collapse" id="tileset-panel-body">
+          <div class="example-panel__content">
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.3d-tiles.folder.source">数据源</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <div class="example-panel__field">
+                    <label class="example-panel__label" for="tileset-source" data-i18n="example.3d-tiles.label.loadMode">加载方式</label>
+                    <select id="tileset-source" class="example-panel__select">
+                      <option value="url" data-i18n="example.3d-tiles.label.url">tileset.json URL</option>
+                      <option value="cesium-ion">Cesium Ion</option>
+                    </select>
+                  </div>
+                  <div id="url-tileset-fields">
+                    <div class="example-panel__field">
+                      <label class="example-panel__label" for="tileset-url" data-i18n="example.3d-tiles.label.url">tileset.json URL</label>
+                      <input id="tileset-url" class="example-panel__input" type="url" autocomplete="off" spellcheck="false" />
+                    </div>
+                  </div>
+                  <div id="ion-tileset-fields" hidden>
+                    <div class="example-panel__field">
+                      <label class="example-panel__label" for="ion-asset-id" data-i18n="example.3d-tiles.label.assetId">Cesium Ion asset id</label>
+                      <input id="ion-asset-id" class="example-panel__input" type="text" autocomplete="off" spellcheck="false" />
+                    </div>
+                    <div class="example-panel__field">
+                      <label class="example-panel__label" for="ion-token" data-i18n="example.3d-tiles.label.token">Cesium Ion token</label>
+                      <input id="ion-token" class="example-panel__input" type="password" autocomplete="off" spellcheck="false" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.3d-tiles.folder.options">选项</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <label class="example-panel__row">
+                    <span class="example-panel__label" data-i18n="example.3d-tiles.label.visible">显示 3D Tiles</span>
+                    <input id="tileset-visible" class="example-panel__checkbox" type="checkbox" checked />
+                  </label>
+                  <label class="example-panel__row">
+                    <span class="example-panel__label" data-i18n="example.3d-tiles.label.flyTo">加载后飞行到 3D Tiles</span>
+                    <input id="tileset-fly-to" class="example-panel__checkbox" type="checkbox" checked />
+                  </label>
+                </div>
+              </div>
+            </details>
+
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.3d-tiles.folder.actions">操作</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <button class="example-panel__button" id="load-tileset" type="button" data-i18n="example.3d-tiles.btn.load">加载</button>
+                  <button class="example-panel__button example-panel__button--ghost" id="remove-tileset" type="button" data-i18n="example.3d-tiles.btn.remove">移除</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="example-panel__folder" open>
+              <summary class="example-panel__folder-summary" data-i18n="example.3d-tiles.folder.status">状态</summary>
+              <div class="example-panel__folder-collapse">
+                <div class="example-panel__folder-body">
+                  <p id="tileset-status" class="example-panel__status" aria-live="polite"></p>
+                </div>
+              </div>
+            </details>
+          </div>
         </div>
-        <label class="switch">
-          <input id="tileset-visible" type="checkbox" checked />
-          <span>显示 3D Tiles</span>
-        </label>
-        <label class="switch">
-          <input id="tileset-fly-to" type="checkbox" checked />
-          <span>加载后飞行到 3D Tiles</span>
-        </label>
-        <p id="tileset-status" class="status" aria-live="polite"></p>
-        <div class="toolbar__row">
-          <button class="button" id="load-url-tileset" type="button">加载 URL</button>
-          <button class="button" id="load-ion-tileset" type="button">加载 Cesium Ion</button>
-          <button class="button" id="remove-tileset" type="button">移除</button>
-        </div>
-      </section>
+      </aside>
     </main>
   </body>
 </html>

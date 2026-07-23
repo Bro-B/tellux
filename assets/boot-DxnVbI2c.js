@@ -1,1 +1,0 @@
-import{r as e,a as l,m as o}from"./toggle-DIIVrEA5.js";function g(a={}){e(),l(document),a.toggle!==!1&&o({mount:a.toggleMount??null,className:a.toggleClassName??"lang-toggle--example",applyDocument:!0})}export{g as b};

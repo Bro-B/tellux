@@ -6,6 +6,9 @@
 
 ## [Unreleased]
 
+### Changed
+- 高斯泼溅案例默认改为 Cesium ion Redmond 资产及对应近景视角
+
 ### Fixed
 - WebGL：将第三方对 `gl.pixelStorei` 的直写同步进 Three.js 状态缓存，避免高斯等库更新纹理后影像瓦片上下错缝
 

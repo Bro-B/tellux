@@ -101,7 +101,7 @@ GitHub 样例固定到上游提交 e5abce2422ff72eae8576c814babbec20ed8fe34。�
 
 「保留数据颜色」默认开启：高斯 sRGB 颜色通过与点云共用的 AgX 逆变换 LUT 补偿最终曝光与色调映射，不改变底图曝光。关闭可对照旧输出。该补偿发生在透明混合前，半透明边缘与其他物体混合后的结果不保证与 Cesium 逐像素一致；实际外观仍需同视角核验。
 
-Spark 2.1.0 的 ESM 上传路径通过 `pnpm-workspace.yaml` 应用 `patches/@sparkjsdev__spark@2.1.0.patch`：三处 `UNPACK_FLIP_Y_WEBGL` 写入改走 Three.js 的状态缓存接口，避免高斯排序更新后 Canvas 底图纹理上下翻转、瓦片错缝。ArcGIS 的 URL 顺序仍为 `{z}/{y}/{x}`。升级 Spark 时运行 `sparkPixelStore.test.ts` 核验上游是否已修复；应用补丁后若开发页面仍使用旧预构建，执行 `pnpm exec vite optimize --force --config examples/vite.config.ts` 并硬刷新，必要时重启已有开发服务。
+Tellux 的 WebGL 渲染器会把第三方对 `gl.pixelStorei` 的直写同步进 Three.js 状态缓存，因此即使用未打补丁的 Spark，高斯排序更新后 Canvas 底图也不会上下错缝。本仓库仍保留 `patches/@sparkjsdev__spark@2.1.0.patch` 作为示例依赖的额外对齐；升级 Spark 时运行 `sparkPixelStore.test.ts` 与 `src/test/webglPixelStoreCache.test.ts`。ArcGIS 的 URL 顺序仍为 `{z}/{y}/{x}`。
 
 保留自定义 3D Tiles 入口，在项目根目录 .env 设置后默认选中它：
 

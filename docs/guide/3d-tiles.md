@@ -106,7 +106,7 @@ viewer.flyToTarget(layer.tileset, {
 - Spark 单文件不经过 TilesRenderer；蝴蝶被放置到展示锚点，缩放至约 12 米，不代表真实地理位置。可替换为 Spark 支持的单文件 URL。
 - 保留自定义 tileset URL，可通过 `VITE_GAUSSIAN_SPLAT_3D_TILESET_URL` 设置默认值。
 
-面板提供定位、移除、高斯与地球显示开关；3D Tiles 模式还提供细节误差，数值越低，加载量通常越大。该案例在示例侧接入 GaussianSplatPlugin / Spark，使用 WebGL，不是 `viewer.tilesets` 的内置高斯 API。
+面板提供定位、移除、高斯与地球显示开关；3D Tiles 模式还提供细节误差，数值越低，加载量通常越大。该案例在示例侧接入 GaussianSplatPlugin / Spark，使用 WebGL，不是 `viewer.tilesets` 的内置高斯 API。Tellux WebGL Viewer 会同步第三方对 `gl.pixelStorei` 的直写，使用未打补丁的 Spark 也不会把底图瓦片上下翻错。
 
 案例为高斯拾取添加了双精度求交与空间索引，处理滚轮缩放、右键旋转时错误高度交点导致的推远和抖动；仍保留模型拾取和地形防穿透。复制集成代码时需一并保留 `stabilizeSplatRaycast`，在高斯数据解码完成后、加入交互场景前调用。索引占用额外 CPU 内存，随高斯对象销毁释放；适用于案例中的静态解码数据，不适用于动态高斯变形或分页数据。
 

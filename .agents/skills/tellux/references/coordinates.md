@@ -93,7 +93,7 @@ Spark 默认输出 sRGB，而 Tellux WebGL 最终对整帧应用曝光与 AgX。
 
 近距离拖动仍出现模型跳动时，另查插件的缓存坐标系。0.1.14 已有 `CameraRelativeSparkRenderer`，但它曾按当前有无可见高斯根节点选择渲染相机；瓦片切换时没有可见根节点，异步排序却仍可显示上一帧相机相对数据，导致 ECEF 世界相机与局部缓存混用。2026-09-06 渲染日志 3658 条中有两条相邻异常记录（同一帧重复渲染），`renderToViewPos` 从米级突变为约 637 万米；其余采样的变换参数量化估算误差为微米级，不能据此证明实际 GPU 每个像素的误差。`patches/3d-tiles-rendererjs-3dgs-plugin@0.1.14.patch` 使渲染始终使用 display 缓存记录的相对坐标系；`sparkCameraFrame.test.ts` 执行安装包的真实坐标转换代码，覆盖无可见根节点、待排序缓存以及 ECEF 矩阵恢复。它与 CPU 拾取精度修复是独立问题，不应再次开关 WebGPU 的 highPrecision 来修 WebGL 高斯路径。依赖补丁变更后刷新 Vite 预构建；此次缓存坐标系修复仍待真实页面验收。
 
-官方 Redmond 资产的 token 留空时，案例使用 CesiumJS 公开评估 token；其他资产使用显式 token 或环境配置。Spark 2.1.0 ESM 的原生 `gl.pixelStorei` 会绕过 Three.js 缓存，使后续 Canvas 纹理翻转失效，仓库通过 pnpm patch 修复。瓦片错缝先区分 URL 索引、ImageBitmap 方向与 WebGL 上传状态，不要仅凭截图交换 x/y。
+官方 Redmond 资产的 token 留空时，案例使用 CesiumJS 公开评估 token；其他资产使用显式 token 或环境配置。Spark 2.1.0 ESM 的原生 `gl.pixelStorei` 会绕过 Three.js 缓存；Tellux WebGL 渲染器在创建时同步该写入，不依赖应用侧给 Spark 打补丁。瓦片错缝先区分 URL 索引、ImageBitmap 方向与 WebGL 上传状态，不要仅凭截图交换 x/y。
 
 ## 世界坐标 → 经纬高（反向）
 

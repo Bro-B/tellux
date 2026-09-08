@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { WebGPURenderer } from 'three/webgpu'
 import type { ThreeRendererWithEffects } from '../effects'
 import type { ViewerOptions, ViewerRendererOptions, ViewerRendererType } from '../types'
+import { syncWebGLPixelStoreCache, type PixelStoreTarget } from './syncWebGLPixelStoreCache'
 
 export type TelluxWebGLRenderer = ThreeRendererWithEffects
 export type TelluxWebGPURenderer = WebGPURenderer
@@ -45,6 +46,12 @@ class WebGLRendererAdapter implements TelluxRendererAdapter {
       antialias: options.renderer?.antialias,
       outputBufferType: THREE.HalfFloatType
     }) as TelluxWebGLRenderer
+    // Three.js 公开类型未包含 WebGLState.pixelStorei，运行时对象有该方法。
+    // Public WebGLState types omit pixelStorei; the runtime object has it.
+    syncWebGLPixelStoreCache(
+      this.renderer.getContext(),
+      this.renderer.state as unknown as PixelStoreTarget
+    )
   }
 
   hasInitialized() {

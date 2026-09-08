@@ -6,6 +6,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- WebGL：将第三方对 `gl.pixelStorei` 的直写同步进 Three.js 状态缓存，避免高斯等库更新纹理后影像瓦片上下错缝
+
 ## [0.2.0] - 2026-07-23
 
 本版本重点：
